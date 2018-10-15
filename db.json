@@ -1,0 +1,57 @@
+{
+  "parents": [
+    {
+      "enrolled": true,
+      "id": 1,
+      "name": "Paul Lim",
+      "notes": []
+    },
+    {
+      "id": 2,
+      "name": "Juan Santos",
+      "enrolled": false,
+      "notes": []
+    },
+    {
+      "id": 3,
+      "name": "Jules Kahilig",
+      "enrolled": false,
+      "notes": []
+    },
+    {
+      "id": 4,
+      "name": "Kyle Fernando",
+      "enrolled": false,
+      "notes": []
+    },
+    {
+      "id": 5,
+      "name": "Cynthia Rivera",
+      "enrolled": false,
+      "notes": []
+    },
+    {
+      "id": 6,
+      "name": "Bridgette Cruz",
+      "enrolled": false,
+      "notes": []
+    },
+    {
+      "id": 7,
+      "name": "Jimmy Alapag",
+      "status": "Pre",
+      "notes": [],
+      "enrolled": false
+    }
+  ],
+  "students": [
+    {
+      "id": 1,
+      "name": "Nathan",
+      "parentId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

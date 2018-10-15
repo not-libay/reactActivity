@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../App.css';
+import '../Style.css';
 
 const axios = require('axios');
 const url = "http://localhost:3000";
@@ -82,7 +82,6 @@ class Contain extends Component {
           <Search handleInputs={this.filterParent.bind(this)}/>
           <Table data={this.state.search} handleClick={this.setActiveParent.bind(this)}/>
           <Single parent={this.state.search} student={this.state.students} selected={this.state.activeParent} handleClick={this.addForm.bind(this)}/>
-          {this.state.postForm.length === 0 ? '' : <p>Student(s) Information</p>}
           {this.state.postForm.map(item=>(
             <div key={item.id}>
               <StudentForm id={item.id} handleClick={this.addInfo} handleInputs={this.saveInput.bind(this)}/>
@@ -94,15 +93,15 @@ class Contain extends Component {
   }
 }
 
-const Search = (props) => <input placeholder="Search.." onKeyPress={props.handleInputs.bind(this)}></input>;
+const Search = (props) => <input className="input-search" placeholder="Search.." onKeyPress={props.handleInputs.bind(this)}></input>;
 
 const StudentForm = (props) => (
   <div>    
-    <table>
+    <table className="table-parent">
       <tbody>
         <tr>
-          <td>Name#{props.id}:</td>
-          <td><input placeholder="Input text here..." onChange={props.handleInputs.bind(this, props.id)}></input></td>
+          <td>Student #{props.id}:</td>
+          <td><input className="input-student" placeholder="Input text here..." onChange={props.handleInputs.bind(this, props.id)}></input></td>
         </tr>
       </tbody>
     </table>
@@ -111,8 +110,7 @@ const StudentForm = (props) => (
 
 const Table = (props) => (
   <div>
-    <p>Table is here</p>
-    <table>
+    <table className="table-table">
       <tbody>
       {props.data.map(parent => (
         <tr key={parent.id}>
@@ -129,25 +127,30 @@ const Table = (props) => (
 const Single = (props) => (
     <div>
       <br/> 
-      <table>
-        <thead>
+      <table className="table-parent">
           {props.parent.map((item)=>{
               if(item.id === props.selected){
                 return (
+                <thead>
                   <tr key={item.id}>
-                    <td>Parent: {item.name}</td>
-                    <td>Enrolled: {item.enrolled === true ? 'yes' : <button onClick={props.handleClick}>Add Form</button>}</td>
+                    <td>Parent:</td>
+                    <td>{item.name}</td>
                   </tr>
+                  <tr>
+                    <td>Enrolled:</td>
+                    <td>{item.enrolled === true ? 'yes' : <button onClick={props.handleClick}>Add Form</button>}</td>
+                  </tr>
+                </thead>
                 )
               }
-            })}
-        </thead>
+            })}        
         <tbody>
             {props.student.map((child)=> {
               if (child.parentId === props.selected){
                 return(
                 <tr key={child.id}>
-                  <td>Student: {child.name}</td>
+                  <td>Student:</td>
+                  <td>{child.name}</td>
                 </tr>)
               }
             })}
